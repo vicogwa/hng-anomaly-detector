@@ -1,0 +1,41 @@
+slack:
+  webhook_url: ""  # Set via SLACK_WEBHOOK_URL env var in .env
+
+log:
+  nginx_access_log: "/var/log/nginx/hng-access.log"
+  audit_log: "/var/log/detector/audit.log"
+
+detection:
+  # Sliding window duration in seconds
+  per_ip_window_seconds: 60
+  global_window_seconds: 60
+  # Rolling baseline window in minutes
+  baseline_window_minutes: 30
+  # How often to recalculate baseline (seconds)
+  baseline_recalc_interval: 60
+  # Minimum data points before baseline is considered reliable
+  baseline_min_samples: 10
+  # Z-score threshold to flag anomaly
+  zscore_threshold: 3.0
+  # Rate multiplier threshold (rate > N * baseline_mean triggers flag)
+  rate_multiplier_threshold: 5.0
+  # Error rate surge multiplier (4xx/5xx rate > N * baseline error rate)
+  error_rate_surge_multiplier: 3.0
+  # Floor values to avoid division by zero and handle cold start
+  baseline_floor_mean: 1.0
+  baseline_floor_stddev: 0.5
+
+blocking:
+  # Backoff schedule in minutes: 10, 30, 120, then permanent
+  unban_schedule_minutes: [10, 30, 120]
+  # After exhausting the schedule, the ban is permanent (no more unbans)
+  permanent_after_cycles: 3
+
+dashboard:
+  host: "0.0.0.0"
+  port: 8080
+  refresh_interval_seconds: 3
+
+alerts:
+  # Slack alert within N seconds of detection
+  max_alert_delay_seconds: 10
