@@ -131,7 +131,8 @@ The same logic is applied to the aggregated global rate across all IPs, catching
 ## Architecture
 
 
-<img width="349" height="428" alt="image" src="https://github.com/user-attachments/assets/a7b53ca1-a3fc-4809-93d0-8537a883c31c" />
+<img width="644" height="786" alt="image" src="https://github.com/user-attachments/assets/3ef8f53b-67ea-4f6c-af9d-b75c40b35b1c" />
+
 
 ---
 
