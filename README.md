@@ -10,7 +10,7 @@
 |---|---|
 | **Server IP** | `52.91.197.224` |
 | **Metrics Dashboard** | `http://52.91.197.224:8080` |
-| **GitHub** | `https://github.com/your-username/hng-anomaly-detector` |
+| **GitHub** | `https://github.com/vicogwa/hng-anomaly-detector` |
 | **Blog Post** | `https://your-blog-post-url-here` |
 
 ---
