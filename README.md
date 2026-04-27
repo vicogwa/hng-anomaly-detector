@@ -11,7 +11,8 @@
 | **Server IP** | `52.91.197.224` |
 | **Metrics Dashboard** | `http://52.91.197.224:8080` |
 | **GitHub** | `https://github.com/vicogwa/hng-anomaly-detector` |
-| **Blog Post** | `https://your-blog-post-url-here` |
+| **Blog Post** | `(https://medium.com/@victoriafrancis885/how-i-built-a-real-time-anomaly-detector-that-automatically-blocks-attackers-a75a8b736b38)` |
+
 
 ---
 
