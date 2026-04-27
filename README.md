@@ -130,47 +130,8 @@ The same logic is applied to the aggregated global rate across all IPs, catching
 
 ## Architecture
 
-```
-Internet
-    │
-    ▼
-Nginx (port 80)
-    │  JSON access logs → /var/log/nginx/hng-access.log
-    │                              │
-    ├──► Nextcloud (PHP)           │  (shared Docker volume: HNG-nginx-logs)
-    │         │                    │
-    │         ▼                    ▼
-    │      MariaDB          Detector Container
-    │                          │
-    │                    monitor.py      ← tails log file
-    │                    baseline.py     ← rolling mean/stddev
-    │                    detector.py     ← z-score + multiplier
-    │                    blocker.py      ← iptables DROP rules
-    │                    unbanner.py     ← backoff unban scheduler
-    │                    notifier.py     ← Slack alerts
-    │                    audit.py        ← structured audit log
-    │                    dashboard.py    ← live metrics (port 8080)
-    │
-    ▼
-Dashboard (port 8080) ← browser
-```
 
----
-
-## Module Summary
-
-| Module | Responsibility |
-|---|---|
-| `main.py` | Entry point, asyncio event loop, orchestrates all components |
-| `monitor.py` | Async log tailer with rotation and truncation detection |
-| `baseline.py` | Rolling 30-min baseline with per-hour traffic bucketing |
-| `detector.py` | Z-score + rate multiplier anomaly detection |
-| `blocker.py` | iptables DROP rule management with backoff schedule |
-| `unbanner.py` | Auto-unban scheduler (10m → 30m → 120m → permanent) |
-| `notifier.py` | Slack Incoming Webhook alerts |
-| `dashboard.py` | aiohttp live metrics dashboard |
-| `audit.py` | Structured audit log (BAN / UNBAN / BASELINE_RECALC) |
-| `config.yaml` | All tunable parameters |
+<img width="349" height="428" alt="image" src="https://github.com/user-attachments/assets/a7b53ca1-a3fc-4809-93d0-8537a883c31c" />
 
 ---
 
